@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.databasegui.HelloController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.databasegui.HelloController">
    <children>
       <VBox layoutX="389.0" layoutY="22.0">
          <children>
@@ -20,12 +20,12 @@
       <VBox layoutX="44.0" layoutY="134.0">
          <children>
             <Label text="Search By" />
-            <RadioButton fx:id="titleRadioButton" mnemonicParsing="false" text="Title">
+            <RadioButton fx:id="titleRadioButton" mnemonicParsing="false" onAction="#radioButtonHandler" text="Title">
                <toggleGroup>
                   <ToggleGroup fx:id="termSearch" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="authorRadioButton" mnemonicParsing="false" text="Author" toggleGroup="$termSearch" />
-            <RadioButton fx:id="publisherRadioButton" mnemonicParsing="false" text="Publisher" />
+            <RadioButton fx:id="authorRadioButton" mnemonicParsing="false" onAction="#radioButtonHandler" text="Author" toggleGroup="$termSearch" />
+            <RadioButton fx:id="publisherRadioButton" mnemonicParsing="false" onAction="#radioButtonHandler" text="Publisher" toggleGroup="$termSearch" />
          </children>
       </VBox>
       <VBox layoutX="197.0" layoutY="134.0">
@@ -34,7 +34,7 @@
             <TextField fx:id="searchTextField" />
          </children>
       </VBox>
-      <Button fx:id="searchButton" layoutX="145.0" layoutY="317.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="searchButton" layoutX="137.0" layoutY="311.0" mnemonicParsing="false" onAction="#searchButtonHandler" text="Search" />
       <ListView fx:id="bookListLabel" layoutX="387.0" layoutY="57.0" prefHeight="332.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
