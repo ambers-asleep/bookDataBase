@@ -44,21 +44,24 @@ public class BookInformationController extends Application {
         titleLabel.setText(dataHolder.getText());
         //chanbeg labels using SQL information
         //make connection
-        //changes title
+        //changes title and grabs the information using ISBN
         String databaseURL = "jdbc:mysql://10.213.67.225:3306/BookDatabase";
         Connection dbConnection = DriverManager.getConnection(databaseURL, "student", "programming");
         PreparedStatement sqlStatement = dbConnection.prepareStatement("select title from books where ISBN =  " + dataHolder.getText());
         ResultSet resultSet = sqlStatement.executeQuery();
         resultSet = sqlStatement.executeQuery();
-
+        String imageURL = resultSet.getString();
         while (resultSet.next()) {
             titleLabel.setText(resultSet.getString(1));
             authorLabel.setText(resultSet.getString(2));
             publisherLabel.setText(resultSet.getString(3));
             yearLabel.setText(resultSet.getString(4));
             ratingLabel.setText(resultSet.getString(5));
-        }
 
+        }
+        //set image
+        Image bookImage = new Image(getClass().getResourceAsStream(imageURL));
+        bookImageView.setImage(bookImage);
 
 
     }
